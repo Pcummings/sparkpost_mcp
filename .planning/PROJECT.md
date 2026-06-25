@@ -17,12 +17,12 @@ An AI client can drive SparkPost email operations (templates + sends) through ty
 - ✓ 8 SparkPost tools: account, template CRUD (list/get/create/update), send, suppression check, sending-domains list — v1.0
 - ✓ Startup hardening: required-key guard, region-overridable base URL, 30s fetch timeout, email validation, defensive response parsing — v1.0
 - ✓ Type safety: strict `tsconfig`, `npm run typecheck` — v1.0
+- ✓ Test coverage + CI: `node:test`+`tsx` unit tests for `spRequest` (4 cases) + all 8 handlers and zod schemas (21 tests total), GitHub Actions typecheck+test on push/PR — v1.1 (Phase 1)
 
 ### Active
 
 <!-- Milestone v1.1 scope. -->
 
-- [ ] Test coverage + CI (tests for request layer and tool handlers, GitHub Actions)
 - [ ] Expanded API coverage (webhooks, message events/analytics, recipient lists, suppression add/remove, subaccounts)
 - [ ] Publish readiness (npm metadata, LICENSE, usage examples, MCP client docs)
 
@@ -53,7 +53,7 @@ An AI client can drive SparkPost email operations (templates + sends) through ty
 | Run `.ts` directly via `tsx`, no build | Smallest setup for a single-file stdio server | ✓ Good |
 | Region via `SPARKPOST_API_BASE` env, EU default | Support US without a second package | ✓ Good |
 | Skip multi-agent research at init | Domain is a known REST wrapper | — Pending |
-| `node:test` for tests (planned) | Stdlib, no test-framework dependency | — Pending |
+| `node:test` for tests | Stdlib, no test-framework dependency | ✓ Good (Phase 1: 21 tests, no new deps) |
 
 ---
-*Last updated: 2026-06-25 after brownfield init*
+*Last updated: 2026-06-25 after Phase 1 (Test Foundation & CI) complete*
