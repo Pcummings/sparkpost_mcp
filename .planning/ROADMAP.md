@@ -6,7 +6,7 @@ Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and
 
 ## Phases
 
-- [ ] **Phase 1: Test Foundation & CI** - Lock in current behavior with tests and automated checks
+- [x] **Phase 1: Test Foundation & CI** - Lock in current behavior with tests and automated checks (completed 2026-06-25)
 - [ ] **Phase 2: Expand API Coverage** - Webhooks, events/analytics, lists, suppression mgmt, subaccounts
 - [ ] **Phase 3: Publish & Docs** - npm publish readiness and usage documentation
 
@@ -23,7 +23,7 @@ Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and
   2. Each shipped tool has a test asserting its payload shaping and zod validation
   3. GitHub Actions runs typecheck + tests on every push and PR, green on `main`
 
-**Plans**: 2/3 plans executed
+**Plans**: 3/3 plans complete
 
 Plans:
 **Wave 1**
@@ -33,7 +33,7 @@ Plans:
 **Wave 2** *(blocked on Wave 1 completion)*
 
 - [x] 01-02-PLAN.md — Tool-handler tests: payload shaping + zod validation for the 8 shipped tools (TEST-02)
-- [ ] 01-03-PLAN.md — GitHub Actions CI: install → typecheck → test on push/PR (TEST-03)
+- [x] 01-03-PLAN.md — GitHub Actions CI: install → typecheck → test on push/PR (TEST-03)
 
 ### Phase 2: Expand API Coverage
 
@@ -80,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Test Foundation & CI | 2/3 | In Progress|  |
+| 1. Test Foundation & CI | 3/3 | Complete   | 2026-06-25 |
 | 2. Expand API Coverage | 0/3 | Not started | - |
 | 3. Publish & Docs | 0/2 | Not started | - |
