@@ -23,9 +23,9 @@ Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Test harness with `node:test` + mocked `fetch`; `spRequest` unit tests
-- [ ] 01-02: Tool-handler tests (payload + schema) for the 8 shipped tools
-- [ ] 01-03: GitHub Actions CI (install → typecheck → test)
+- [ ] 01-01-PLAN.md — Extract `src/sparkpost.ts` + thin `index.ts`; node:test/tsx harness; `spRequest` unit tests (TEST-01)
+- [ ] 01-02-PLAN.md — Tool-handler tests: payload shaping + zod validation for the 8 shipped tools (TEST-02)
+- [ ] 01-03-PLAN.md — GitHub Actions CI: install → typecheck → test on push/PR (TEST-03)
 
 ### Phase 2: Expand API Coverage
 **Goal**: The server exposes the next tier of SparkPost operations, each typed, validated, and tested like the existing tools.
