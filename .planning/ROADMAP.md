@@ -51,9 +51,11 @@ Plans:
 
 Plans:
 
-- [ ] 02-01: Webhook + subaccount tools
-- [ ] 02-02: Message-events + metrics/reports tools
-- [ ] 02-03: Recipient-list + suppression add/remove tools
+**Wave 1** *(logically independent; each appends distinct exports to `src/sparkpost.ts` + distinct registrations to `index.ts` and writes its own test file)*
+
+- [ ] 02-01-PLAN.md — Webhook tools (list/create/delete) + subaccount tools (list/create) (COV-01, COV-05)
+- [ ] 02-02-PLAN.md — Message-events search + deliverability metrics (COV-02)
+- [ ] 02-03-PLAN.md — Recipient lists (list/get/create) + suppression add/remove (COV-03, COV-04)
 
 ### Phase 3: Publish & Docs
 
