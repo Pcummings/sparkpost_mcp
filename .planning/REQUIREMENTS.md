@@ -32,7 +32,7 @@ Milestone v1.1 active scope. Each maps to a roadmap phase.
 ### Testing & CI
 
 - [x] **TEST-01**: `spRequest` has unit tests (success, non-OK with status, empty body, timeout) with mocked `fetch`
-- [ ] **TEST-02**: Tool handlers have tests asserting payload shaping + zod validation against mocked SparkPost
+- [x] **TEST-02**: Tool handlers have tests asserting payload shaping + zod validation against mocked SparkPost
 - [ ] **TEST-03**: GitHub Actions runs install → typecheck → test on push and PR
 
 ### API Coverage
@@ -72,7 +72,7 @@ Deferred, tracked, not in current roadmap.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | TEST-01 | Phase 1 | Complete |
-| TEST-02 | Phase 1 | Pending |
+| TEST-02 | Phase 1 | Complete |
 | TEST-03 | Phase 1 | Pending |
 | COV-01 | Phase 2 | Pending |
 | COV-02 | Phase 2 | Pending |

@@ -6,14 +6,14 @@ current_phase: 01
 current_phase_name: test-foundation-ci
 status: executing
 stopped_at: Created PROJECT.md, REQUIREMENTS.md, ROADMAP.md, STATE.md, config.json
-last_updated: "2026-06-25T15:56:43.960Z"
+last_updated: "2026-06-25T16:00:33.959Z"
 last_activity: 2026-06-25
 last_activity_desc: Phase 01 execution started
 progress:
   total_phases: 3
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -29,7 +29,7 @@ See: .planning/PROJECT.md (updated 2026-06-25)
 ## Current Position
 
 Phase: 01 (test-foundation-ci) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-06-25 — Phase 01 execution started
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 ## Accumulated Context
 
 | Phase 01 P01 | 5min | - tasks | - files |
+| Phase 01-test-foundation-ci P02 | 3min | 1 tasks | 1 files |
 
 ### Decisions
 
@@ -62,6 +63,8 @@ Decisions are logged in PROJECT.md Key Decisions table. Recent:
 - Init: skipped multi-agent research (known REST-wrapper domain)
 - [Phase ?]: .planning/phases/01-test-foundation-ci/01-01-SUMMARY.md
 - [Phase ?]: .planning/phases/01-test-foundation-ci/01-01-SUMMARY.md
+- [Phase ?]: Zod v4 error messages are lowercase — use case-insensitive regex for type error assertions
+- [Phase ?]: Schema rejection tests call z.object(SchemaConst).parse() directly (D-02: handler calls bypass SDK validation)
 
 ### Pending Todos
 
@@ -79,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-25T15:55:37.556Z
+Last session: 2026-06-25T16:00:23.934Z
 Stopped at: Created PROJECT.md, REQUIREMENTS.md, ROADMAP.md, STATE.md, config.json
 Resume file: None

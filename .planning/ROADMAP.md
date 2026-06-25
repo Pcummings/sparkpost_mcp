@@ -23,7 +23,7 @@ Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and
   2. Each shipped tool has a test asserting its payload shaping and zod validation
   3. GitHub Actions runs typecheck + tests on every push and PR, green on `main`
 
-**Plans**: 1/3 plans executed
+**Plans**: 2/3 plans executed
 
 Plans:
 **Wave 1**
@@ -32,7 +32,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 01-02-PLAN.md — Tool-handler tests: payload shaping + zod validation for the 8 shipped tools (TEST-02)
+- [x] 01-02-PLAN.md — Tool-handler tests: payload shaping + zod validation for the 8 shipped tools (TEST-02)
 - [ ] 01-03-PLAN.md — GitHub Actions CI: install → typecheck → test on push/PR (TEST-03)
 
 ### Phase 2: Expand API Coverage
@@ -80,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Test Foundation & CI | 1/3 | In Progress|  |
+| 1. Test Foundation & CI | 2/3 | In Progress|  |
 | 2. Expand API Coverage | 0/3 | Not started | - |
 | 3. Publish & Docs | 0/2 | Not started | - |
