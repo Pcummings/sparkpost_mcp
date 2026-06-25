@@ -23,12 +23,12 @@ Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and
   2. Each shipped tool has a test asserting its payload shaping and zod validation
   3. GitHub Actions runs typecheck + tests on every push and PR, green on `main`
 
-**Plans**: 3 plans
+**Plans**: 1/3 plans executed
 
 Plans:
 **Wave 1**
 
-- [ ] 01-01-PLAN.md — Extract `src/sparkpost.ts` + thin `index.ts`; node:test/tsx harness; `spRequest` unit tests (TEST-01)
+- [x] 01-01-PLAN.md — Extract `src/sparkpost.ts` + thin `index.ts`; node:test/tsx harness; `spRequest` unit tests (TEST-01)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -80,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Test Foundation & CI | 0/3 | Not started | - |
+| 1. Test Foundation & CI | 1/3 | In Progress|  |
 | 2. Expand API Coverage | 0/3 | Not started | - |
 | 3. Publish & Docs | 0/2 | Not started | - |
