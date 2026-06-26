@@ -15,6 +15,14 @@ import {
   SendEmailSchema,
   checkSuppression,
   CheckSuppressionSchema,
+  listWebhooks,
+  createWebhook,
+  CreateWebhookSchema,
+  deleteWebhook,
+  DeleteWebhookSchema,
+  listSubaccounts,
+  createSubaccount,
+  CreateSubaccountSchema,
 } from "./src/sparkpost.js";
 
 const API_KEY = process.env.SPARKPOST_API_KEY;
@@ -33,6 +41,11 @@ server.tool("update_template", "Update an existing template", UpdateTemplateSche
 server.tool("send_email", "Send a test/transactional email", SendEmailSchema, sendEmail);
 server.tool("check_suppression", "Check if an address is suppressed", CheckSuppressionSchema, checkSuppression);
 server.tool("list_sending_domains", "List all verified sending domains", {}, listSendingDomains);
+server.tool("list_webhooks", "List all webhooks", {}, listWebhooks);
+server.tool("create_webhook", "Create a webhook (name, target URL, events)", CreateWebhookSchema, createWebhook);
+server.tool("delete_webhook", "Delete a single webhook by id", DeleteWebhookSchema, deleteWebhook);
+server.tool("list_subaccounts", "List all subaccounts", {}, listSubaccounts);
+server.tool("create_subaccount", "Create a subaccount with an API key (name, key_label, key_grants)", CreateSubaccountSchema, createSubaccount);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
