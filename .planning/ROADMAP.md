@@ -72,8 +72,13 @@ Plans:
 
 Plans:
 
-- [ ] 03-01: npm publish readiness (LICENSE, files, metadata, prepublishOnly)
-- [ ] 03-02: Per-tool usage examples + MCP client config docs
+**Wave 1**
+
+- [ ] 03-01-PLAN.md — npm publish readiness: MIT LICENSE, package.json files allowlist + license/author/prepublishOnly + tsx devDep→dep, delete tsconfig.json.bak; gate `npm publish --dry-run` (PKG-02)
+
+**Wave 2** *(blocked on Wave 1 — README's published config references the bin 03-01 makes resolvable)*
+
+- [ ] 03-02-PLAN.md — usage docs: README 20-tool table (verbatim from index.ts), key-tool usage examples, published `npx -y sparkpost-mcp` + local-dev MCP client config (PKG-01)
 
 ## Progress
 
