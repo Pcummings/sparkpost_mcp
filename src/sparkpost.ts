@@ -300,6 +300,81 @@ export const GetDeliverabilityMetricsSchema = {
   timezone: z.string().optional(),
 };
 
+// --- Recipient list tools ---
+
+export const GetRecipientListSchema = {
+  id: z.string(),
+  show_recipients: z.boolean().optional().default(false),
+};
+
+export async function listRecipientLists() {
+  return asText(await spRequest("/recipient-lists"));
+}
+
+export async function getRecipientList({ id, show_recipients }: { id: string; show_recipients?: boolean }) {
+  return asText(await spRequest(
+    `/recipient-lists/${encodeURIComponent(id)}${show_recipients ? "?show_recipients=true" : ""}`,
+  ));
+}
+
+export const CreateRecipientListSchema = {
+  recipients: z.array(z.object({ email: z.email(), name: z.string().optional() })).min(1),
+  id: z.string().optional(),
+  name: z.string().optional(),
+  description: z.string().optional(),
+};
+
+export async function createRecipientList({
+  recipients,
+  id,
+  name,
+  description,
+}: {
+  recipients: Array<{ email: string; name?: string }>;
+  id?: string;
+  name?: string;
+  description?: string;
+}) {
+  return asText(await spRequest("/recipient-lists", "POST", {
+    recipients: recipients.map(r => ({ address: { email: r.email, name: r.name } })),
+    ...(id && { id }),
+    ...(name && { name }),
+    ...(description && { description }),
+  }));
+}
+
+// --- Suppression management tools ---
+
+export const AddSuppressionSchema = {
+  email: z.email(),
+  type: z.enum(["transactional", "non_transactional"]).default("non_transactional"),
+  description: z.string().optional(),
+};
+
+export async function addSuppression({
+  email,
+  type,
+  description,
+}: {
+  email: string;
+  type: string;
+  description?: string;
+}) {
+  return asText(await spRequest(
+    `/suppression-list/${encodeURIComponent(email)}`,
+    "PUT",
+    { type, ...(description && { description }) },
+  ));
+}
+
+export const RemoveSuppressionSchema = {
+  email: z.email(),
+};
+
+export async function removeSuppression({ email }: { email: string }) {
+  return asText(await spRequest(`/suppression-list/${encodeURIComponent(email)}`, "DELETE"));
+}
+
 export async function getDeliverabilityMetrics({
   from,
   metrics,
