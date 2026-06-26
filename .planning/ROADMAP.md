@@ -47,13 +47,13 @@ Plans:
   3. New tools exist for recipient lists (list/get/create) and suppression add/remove
   4. Every new tool has tests and passes typecheck
 
-**Plans**: 3 plans
+**Plans**: 1/3 plans executed
 
 Plans:
 
 **Wave 1** *(logically independent; each appends distinct exports to `src/sparkpost.ts` + distinct registrations to `index.ts` and writes its own test file)*
 
-- [ ] 02-01-PLAN.md — Webhook tools (list/create/delete) + subaccount tools (list/create) (COV-01, COV-05)
+- [x] 02-01-PLAN.md — Webhook tools (list/create/delete) + subaccount tools (list/create) (COV-01, COV-05)
 - [ ] 02-02-PLAN.md — Message-events search + deliverability metrics (COV-02)
 - [ ] 02-03-PLAN.md — Recipient lists (list/get/create) + suppression add/remove (COV-03, COV-04)
 
@@ -83,5 +83,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Test Foundation & CI | 3/3 | Complete    | 2026-06-25 |
-| 2. Expand API Coverage | 0/3 | Not started | - |
+| 2. Expand API Coverage | 1/3 | In Progress|  |
 | 3. Publish & Docs | 0/2 | Not started | - |
