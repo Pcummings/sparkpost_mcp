@@ -165,3 +165,77 @@ export const CheckSuppressionSchema = {
 export async function checkSuppression({ email }: { email: string }) {
   return asText(await spRequest(`/suppression-list/${encodeURIComponent(email)}`));
 }
+
+// --- Webhook tools ---
+
+export const WEBHOOK_EVENTS = [
+  "bounce", "delivery", "injection", "spam_complaint", "out_of_band",
+  "policy_rejection", "delay", "click", "open", "initial_open",
+  "amp_click", "amp_open", "amp_initial_open", "generation_failure",
+  "generation_rejection", "list_unsubscribe", "link_unsubscribe",
+  "relay_injection", "relay_rejection", "relay_delivery", "relay_tempfail",
+  "relay_permfail", "ab_test_completed", "ab_test_cancelled", "success", "error",
+] as const;
+
+export const CreateWebhookSchema = {
+  name: z.string(),
+  target: z.string().url(),
+  events: z.array(z.enum(WEBHOOK_EVENTS)).min(1),
+  auth_type: z.enum(["none", "basic", "oauth2"]).optional().default("none"),
+};
+
+export async function listWebhooks() {
+  return asText(await spRequest("/webhooks"));
+}
+
+export async function createWebhook({
+  name,
+  target,
+  events,
+  auth_type,
+}: {
+  name: string;
+  target: string;
+  events: string[];
+  auth_type?: string;
+}) {
+  return asText(await spRequest("/webhooks", "POST", { name, target, events, auth_type }));
+}
+
+export const DeleteWebhookSchema = {
+  id: z.string().describe("Webhook UUID"),
+};
+
+export async function deleteWebhook({ id }: { id: string }) {
+  return asText(await spRequest(`/webhooks/${encodeURIComponent(id)}`, "DELETE"));
+}
+
+// --- Subaccount tools ---
+
+export const KEY_GRANTS = [
+  "smtp/inject", "sending_domains/manage", "tracking_domains/view",
+  "tracking_domains/manage", "message_events/view", "suppression_lists/manage",
+  "transmissions/view", "transmissions/modify", "webhooks/view", "webhooks/modify",
+] as const;
+
+export const CreateSubaccountSchema = {
+  name: z.string(),
+  key_label: z.string(),
+  key_grants: z.array(z.enum(KEY_GRANTS)).min(1),
+};
+
+export async function listSubaccounts() {
+  return asText(await spRequest("/subaccounts"));
+}
+
+export async function createSubaccount({
+  name,
+  key_label,
+  key_grants,
+}: {
+  name: string;
+  key_label: string;
+  key_grants: string[];
+}) {
+  return asText(await spRequest("/subaccounts", "POST", { name, key_label, key_grants }));
+}
