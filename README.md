@@ -13,6 +13,20 @@ npm start
 
 ## MCP client config
 
+**Published package (recommended):**
+```json
+{
+  "mcpServers": {
+    "sparkpost": {
+      "command": "npx",
+      "args": ["-y", "sparkpost-mcp"],
+      "env": { "SPARKPOST_API_KEY": "your-key" }
+    }
+  }
+}
+```
+
+**Local dev:**
 ```json
 {
   "mcpServers": {
