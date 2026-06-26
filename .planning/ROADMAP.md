@@ -89,4 +89,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Test Foundation & CI | 3/3 | Complete    | 2026-06-25 |
 | 2. Expand API Coverage | 3/3 | Complete    | 2026-06-26 |
-| 3. Publish & Docs | 2/2 | Complete   | 2026-06-26 |
+| 3. Publish & Docs | 2/2 | Complete    | 2026-06-26 |
