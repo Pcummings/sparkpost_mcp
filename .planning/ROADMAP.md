@@ -7,7 +7,7 @@ Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and
 ## Phases
 
 - [x] **Phase 1: Test Foundation & CI** - Lock in current behavior with tests and automated checks (completed 2026-06-25)
-- [ ] **Phase 2: Expand API Coverage** - Webhooks, events/analytics, lists, suppression mgmt, subaccounts
+- [x] **Phase 2: Expand API Coverage** - Webhooks, events/analytics, lists, suppression mgmt, subaccounts (completed 2026-06-26)
 - [ ] **Phase 3: Publish & Docs** - npm publish readiness and usage documentation
 
 ## Phase Details
@@ -47,7 +47,7 @@ Plans:
   3. New tools exist for recipient lists (list/get/create) and suppression add/remove
   4. Every new tool has tests and passes typecheck
 
-**Plans**: 2/3 plans executed
+**Plans**: 3/3 plans complete
 
 Plans:
 
@@ -55,7 +55,7 @@ Plans:
 
 - [x] 02-01-PLAN.md — Webhook tools (list/create/delete) + subaccount tools (list/create) (COV-01, COV-05)
 - [x] 02-02-PLAN.md — Message-events search + deliverability metrics (COV-02)
-- [ ] 02-03-PLAN.md — Recipient lists (list/get/create) + suppression add/remove (COV-03, COV-04)
+- [x] 02-03-PLAN.md — Recipient lists (list/get/create) + suppression add/remove (COV-03, COV-04)
 
 ### Phase 3: Publish & Docs
 
@@ -83,5 +83,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Test Foundation & CI | 3/3 | Complete    | 2026-06-25 |
-| 2. Expand API Coverage | 2/3 | In Progress|  |
+| 2. Expand API Coverage | 3/3 | Complete   | 2026-06-26 |
 | 3. Publish & Docs | 0/2 | Not started | - |
