@@ -2,7 +2,7 @@
 
 ## What This Is
 
-An MCP (Model Context Protocol) server that exposes the SparkPost (EU) email API as tools, so an AI client can manage account info, email templates, transactional sends, suppression, and sending domains. Single-file TypeScript server run via `tsx` over stdio.
+An MCP (Model Context Protocol) server that exposes the SparkPost (EU) email API as 20 tools, so an AI client can manage account info, templates, transactional sends, suppression, sending domains, webhooks, subaccounts, recipient lists, and message-event/deliverability analytics. TypeScript server (`index.ts` entry + `src/sparkpost.ts` request layer) run via `tsx` over stdio.
 
 ## Core Value
 
@@ -23,9 +23,11 @@ An AI client can drive SparkPost email operations (templates + sends) through ty
 
 ### Active
 
-<!-- Milestone v1.1 scope. -->
+<!-- Candidates for next milestone (v1.2) — define scope via /gsd-new-milestone. -->
 
-- _None — milestone v1.1 scope complete._
+- [ ] COV-06: Inbound relay webhooks
+- [ ] COV-07: A/B testing transmissions
+- [ ] COV-08: Template preview/render endpoint
 
 ### Out of Scope
 
@@ -37,7 +39,7 @@ An AI client can drive SparkPost email operations (templates + sends) through ty
 
 - Brownfield: started from a working 127-line `index.ts` (MCP SDK + zod v4, stdio transport).
 - Hardening pass already applied (see Validated). Region defaults to EU; `SPARKPOST_API_BASE` overrides for US.
-- No automated tests yet — the single biggest gap before expanding the tool surface.
+- Current state (v1.1): ~1089 LOC TS across `index.ts` + `src/sparkpost.ts` + tests; 20 tools; 44 `node:test` tests green in CI (GitHub Actions on push/PR).
 - GSD research subagents were skipped at init (well-understood REST-wrapper domain); run `/gsd-plan-phase` research per-phase if depth is wanted.
 
 ## Constraints
@@ -54,7 +56,9 @@ An AI client can drive SparkPost email operations (templates + sends) through ty
 | Run `.ts` directly via `tsx`, no build | Smallest setup for a single-file stdio server | ✓ Good |
 | Region via `SPARKPOST_API_BASE` env, EU default | Support US without a second package | ✓ Good |
 | Skip multi-agent research at init | Domain is a known REST wrapper | — Pending |
-| `node:test` for tests | Stdlib, no test-framework dependency | ✓ Good (Phase 1: 21 tests, no new deps) |
+| `node:test` for tests | Stdlib, no test-framework dependency | ✓ Good (44 tests, no new deps) |
+| `encodeURIComponent` on all path-interpolated IDs | Prevent path traversal in webhook/list/suppression routes | ✓ Good |
+| `tsx` as a runtime dependency (not just dev) | `bin` needs the loader at install time for `npx` users | ✓ Good |
 
 ---
-*Last updated: 2026-06-26 after Phase 3 (Publish & Docs) complete — milestone v1.1 done: 20 tools, npm-publish-ready (metadata + LICENSE + README docs)*
+*Last updated: 2026-06-26 after v1.1 Expand & Publish milestone complete — 20 tools, 44 tests in CI, npm-publish-ready. Next: `/gsd-new-milestone` for v1.2.*

@@ -1,92 +1,31 @@
 # Roadmap: SparkPost MCP
 
-## Overview
+## Milestones
 
-Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and ready to share: first a test+CI safety net, then a wider SparkPost API surface, then npm publish readiness. Tests come first so the coverage expansion in Phase 2 lands on a verified request layer.
+- ✅ **v1.1 Expand & Publish** — Phases 1-3 (shipped 2026-06-26)
+- 📋 **v1.2 (next)** — to be planned via `/gsd-new-milestone`
 
 ## Phases
 
-- [x] **Phase 1: Test Foundation & CI** - Lock in current behavior with tests and automated checks (completed 2026-06-25)
-- [x] **Phase 2: Expand API Coverage** - Webhooks, events/analytics, lists, suppression mgmt, subaccounts (completed 2026-06-26)
-- [x] **Phase 3: Publish & Docs** - npm publish readiness and usage documentation (completed 2026-06-26)
+<details>
+<summary>✅ v1.1 Expand & Publish (Phases 1-3) — SHIPPED 2026-06-26</summary>
 
-## Phase Details
+- [x] **Phase 1: Test Foundation & CI** (3/3 plans) — completed 2026-06-25 — Lock in current behavior with tests and automated checks
+- [x] **Phase 2: Expand API Coverage** (3/3 plans) — completed 2026-06-26 — Webhooks, events/analytics, lists, suppression mgmt, subaccounts
+- [x] **Phase 3: Publish & Docs** (2/2 plans) — completed 2026-06-26 — npm publish readiness and usage documentation
 
-### Phase 1: Test Foundation & CI
+Full detail archived in `milestones/v1.1-ROADMAP.md`.
 
-**Goal**: The existing request layer and tool handlers are covered by tests that run in CI, so future changes can't silently break shipped tools.
-**Depends on**: Nothing (first phase)
-**Requirements**: TEST-01, TEST-02, TEST-03
-**Success Criteria** (what must be TRUE):
+</details>
 
-  1. `spRequest` is tested for success, non-OK (status in error), empty body, and timeout with mocked `fetch`
-  2. Each shipped tool has a test asserting its payload shaping and zod validation
-  3. GitHub Actions runs typecheck + tests on every push and PR, green on `main`
+### 📋 v1.2 (next) — Planned
 
-**Plans**: 3/3 plans complete
-
-Plans:
-**Wave 1**
-
-- [x] 01-01-PLAN.md — Extract `src/sparkpost.ts` + thin `index.ts`; node:test/tsx harness; `spRequest` unit tests (TEST-01)
-
-**Wave 2** *(blocked on Wave 1 completion)*
-
-- [x] 01-02-PLAN.md — Tool-handler tests: payload shaping + zod validation for the 8 shipped tools (TEST-02)
-- [x] 01-03-PLAN.md — GitHub Actions CI: install → typecheck → test on push/PR (TEST-03)
-
-### Phase 2: Expand API Coverage
-
-**Goal**: The server exposes the next tier of SparkPost operations, each typed, validated, and tested like the existing tools.
-**Depends on**: Phase 1
-**Requirements**: COV-01, COV-02, COV-03, COV-04, COV-05
-**Success Criteria** (what must be TRUE):
-
-  1. New tools exist for webhooks (list/create/delete) and subaccounts (list/create)
-  2. New tools exist for message events and deliverability metrics
-  3. New tools exist for recipient lists (list/get/create) and suppression add/remove
-  4. Every new tool has tests and passes typecheck
-
-**Plans**: 3/3 plans complete
-
-Plans:
-
-**Wave 1** *(logically independent; each appends distinct exports to `src/sparkpost.ts` + distinct registrations to `index.ts` and writes its own test file)*
-
-- [x] 02-01-PLAN.md — Webhook tools (list/create/delete) + subaccount tools (list/create) (COV-01, COV-05)
-- [x] 02-02-PLAN.md — Message-events search + deliverability metrics (COV-02)
-- [x] 02-03-PLAN.md — Recipient lists (list/get/create) + suppression add/remove (COV-03, COV-04)
-
-### Phase 3: Publish & Docs
-
-**Goal**: The server is documented and ready to publish to npm so others can install and configure it in an MCP client.
-**Depends on**: Phase 2
-**Requirements**: PKG-01, PKG-02
-**Success Criteria** (what must be TRUE):
-
-  1. README documents every tool with a usage example and shows MCP client config
-  2. `package.json` has `files` allowlist, LICENSE, and `prepublishOnly` typecheck
-  3. `npm publish --dry-run` produces a clean, minimal tarball
-
-**Plans**: 2/2 plans complete
-
-Plans:
-
-**Wave 1**
-
-- [x] 03-01-PLAN.md — npm publish readiness: MIT LICENSE, package.json files allowlist + license/author/prepublishOnly + tsx devDep→dep, delete tsconfig.json.bak; gate `npm publish --dry-run` (PKG-02)
-
-**Wave 2** *(blocked on Wave 1 — README's published config references the bin 03-01 makes resolvable)*
-
-- [x] 03-02-PLAN.md — usage docs: README 20-tool table (verbatim from index.ts), key-tool usage examples, published `npx -y sparkpost-mcp` + local-dev MCP client config (PKG-01)
+- _None yet — run `/gsd-new-milestone` to define scope (candidates: COV-06 inbound relay webhooks, COV-07 A/B transmissions, COV-08 template preview/render)._
 
 ## Progress
 
-**Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3
-
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Test Foundation & CI | 3/3 | Complete    | 2026-06-25 |
-| 2. Expand API Coverage | 3/3 | Complete    | 2026-06-26 |
-| 3. Publish & Docs | 2/2 | Complete    | 2026-06-26 |
+| Phase                    | Milestone | Plans Complete | Status   | Completed  |
+| ------------------------ | --------- | -------------- | -------- | ---------- |
+| 1. Test Foundation & CI  | v1.1      | 3/3            | Complete | 2026-06-25 |
+| 2. Expand API Coverage   | v1.1      | 3/3            | Complete | 2026-06-26 |
+| 3. Publish & Docs        | v1.1      | 2/2            | Complete | 2026-06-26 |
