@@ -18,12 +18,12 @@ An AI client can drive SparkPost email operations (templates + sends) through ty
 - ✓ Startup hardening: required-key guard, region-overridable base URL, 30s fetch timeout, email validation, defensive response parsing — v1.0
 - ✓ Type safety: strict `tsconfig`, `npm run typecheck` — v1.0
 - ✓ Test coverage + CI: `node:test`+`tsx` unit tests for `spRequest` (4 cases) + all 8 handlers and zod schemas (21 tests total), GitHub Actions typecheck+test on push/PR — v1.1 (Phase 1)
+- ✓ Expanded API coverage: 12 new typed/zod-validated tools — webhooks (list/create/delete), subaccounts (list/create), message events search, deliverability metrics, recipient lists (list/get/create), suppression add/remove; 23 new tests (44 total). COV-01..05 — v1.1 (Phase 2)
 
 ### Active
 
 <!-- Milestone v1.1 scope. -->
 
-- [ ] Expanded API coverage (webhooks, message events/analytics, recipient lists, suppression add/remove, subaccounts)
 - [ ] Publish readiness (npm metadata, LICENSE, usage examples, MCP client docs)
 
 ### Out of Scope
@@ -56,4 +56,4 @@ An AI client can drive SparkPost email operations (templates + sends) through ty
 | `node:test` for tests | Stdlib, no test-framework dependency | ✓ Good (Phase 1: 21 tests, no new deps) |
 
 ---
-*Last updated: 2026-06-25 after Phase 1 (Test Foundation & CI) complete*
+*Last updated: 2026-06-26 after Phase 2 (Expand API Coverage) complete — 20 tools total*
