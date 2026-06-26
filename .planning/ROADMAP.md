@@ -8,7 +8,7 @@ Starting from a hardened 8-tool server, milestone v1.1 makes it safe to grow and
 
 - [x] **Phase 1: Test Foundation & CI** - Lock in current behavior with tests and automated checks (completed 2026-06-25)
 - [x] **Phase 2: Expand API Coverage** - Webhooks, events/analytics, lists, suppression mgmt, subaccounts (completed 2026-06-26)
-- [ ] **Phase 3: Publish & Docs** - npm publish readiness and usage documentation
+- [x] **Phase 3: Publish & Docs** - npm publish readiness and usage documentation (completed 2026-06-26)
 
 ## Phase Details
 
@@ -68,7 +68,7 @@ Plans:
   2. `package.json` has `files` allowlist, LICENSE, and `prepublishOnly` typecheck
   3. `npm publish --dry-run` produces a clean, minimal tarball
 
-**Plans**: 1/2 plans executed
+**Plans**: 2/2 plans complete
 
 Plans:
 
@@ -78,7 +78,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 — README's published config references the bin 03-01 makes resolvable)*
 
-- [ ] 03-02-PLAN.md — usage docs: README 20-tool table (verbatim from index.ts), key-tool usage examples, published `npx -y sparkpost-mcp` + local-dev MCP client config (PKG-01)
+- [x] 03-02-PLAN.md — usage docs: README 20-tool table (verbatim from index.ts), key-tool usage examples, published `npx -y sparkpost-mcp` + local-dev MCP client config (PKG-01)
 
 ## Progress
 
@@ -89,4 +89,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Test Foundation & CI | 3/3 | Complete    | 2026-06-25 |
 | 2. Expand API Coverage | 3/3 | Complete    | 2026-06-26 |
-| 3. Publish & Docs | 1/2 | In Progress|  |
+| 3. Publish & Docs | 2/2 | Complete   | 2026-06-26 |

@@ -45,7 +45,7 @@ Milestone v1.1 active scope. Each maps to a roadmap phase.
 
 ### Packaging
 
-- [ ] **PKG-01**: Per-tool usage examples + MCP client config docs (Claude Desktop and generic)
+- [x] **PKG-01**: Per-tool usage examples + MCP client config docs (Claude Desktop and generic)
 - [x] **PKG-02**: npm publish readiness — `files` allowlist, LICENSE, metadata, `prepublishOnly` typecheck
 
 ## v2 Requirements
@@ -79,7 +79,7 @@ Deferred, tracked, not in current roadmap.
 | COV-03 | Phase 2 | Complete |
 | COV-04 | Phase 2 | Complete |
 | COV-05 | Phase 2 | Complete |
-| PKG-01 | Phase 3 | Pending |
+| PKG-01 | Phase 3 | Complete |
 | PKG-02 | Phase 3 | Complete |
 
 **Coverage:**
