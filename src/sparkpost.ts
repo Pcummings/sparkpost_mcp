@@ -239,3 +239,90 @@ export async function createSubaccount({
 }) {
   return asText(await spRequest("/subaccounts", "POST", { name, key_label, key_grants }));
 }
+
+// --- Events + Metrics tools ---
+
+// MESSAGE_EVENT_TYPES is the message-events subset — DISTINCT from WEBHOOK_EVENTS (Pitfall 3)
+export const MESSAGE_EVENT_TYPES = [
+  "bounce", "delivery", "injection", "spam_complaint", "out_of_band",
+  "policy_rejection", "delay", "click", "open", "initial_open",
+  "amp_click", "amp_open", "amp_initial_open", "generation_failure",
+  "generation_rejection", "list_unsubscribe", "link_unsubscribe",
+] as const;
+
+export const SearchMessageEventsSchema = {
+  from: z.string().optional().describe("Start of time range (ISO-8601)"),
+  to: z.string().optional().describe("End of time range (ISO-8601)"),
+  events: z.array(z.enum(MESSAGE_EVENT_TYPES)).optional().describe("Filter by event types"),
+  recipients: z.string().optional().describe("Comma-delimited recipient emails"),
+  recipient_domains: z.string().optional().describe("Comma-delimited recipient domains"),
+  per_page: z.number().int().min(1).max(10000).optional().describe("Results per page (1–10000)"),
+  cursor: z.string().optional().describe("Pagination cursor from previous response links"),
+};
+
+export async function searchMessageEvents({
+  from,
+  to,
+  events,
+  recipients,
+  recipient_domains,
+  per_page,
+  cursor,
+}: {
+  from?: string;
+  to?: string;
+  events?: string[];
+  recipients?: string;
+  recipient_domains?: string;
+  per_page?: number;
+  cursor?: string;
+}) {
+  const params = new URLSearchParams();
+  if (from) params.set("from", from);
+  if (to) params.set("to", to);
+  if (events?.length) params.set("events", events.join(","));
+  if (recipients) params.set("recipients", recipients);
+  if (recipient_domains) params.set("recipient_domains", recipient_domains);
+  if (per_page !== undefined) params.set("per_page", String(per_page));
+  if (cursor) params.set("cursor", cursor);
+  const qs = params.toString();
+  return asText(await spRequest(`/events/message${qs ? "?" + qs : ""}`, "GET"));
+}
+
+export const GetDeliverabilityMetricsSchema = {
+  from: z.string().describe("Start of time range (ISO-8601, required)"),
+  metrics: z.array(z.string()).min(1).describe(
+    "Metrics to retrieve (e.g. count_delivered, count_bounce, count_accepted, open_rate, click_rate)",
+  ),
+  to: z.string().optional().describe("End of time range (ISO-8601)"),
+  group_by: z.enum(["domain", "sending-ip", "ip-pool", "sending-domain", "subaccount", "campaign", "template"]).optional().describe("Breakdown dimension (becomes a URL path suffix)"),
+  limit: z.number().int().min(1).max(10000).optional(),
+  timezone: z.string().optional(),
+};
+
+export async function getDeliverabilityMetrics({
+  from,
+  metrics,
+  to,
+  group_by,
+  limit,
+  timezone,
+}: {
+  from: string;
+  metrics: string[];
+  to?: string;
+  group_by?: string;
+  limit?: number;
+  timezone?: string;
+}) {
+  const params = new URLSearchParams();
+  // from + metrics are required — always set
+  params.set("from", from);
+  params.set("metrics", metrics.join(","));
+  if (to) params.set("to", to);
+  if (limit !== undefined) params.set("limit", String(limit));
+  if (timezone) params.set("timezone", timezone);
+  // group_by is a PATH segment, never a query param (Pitfall 2)
+  const suffix = group_by ? `/${group_by}` : "";
+  return asText(await spRequest(`/metrics/deliverability${suffix}?${params.toString()}`, "GET"));
+}
