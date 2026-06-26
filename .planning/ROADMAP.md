@@ -68,13 +68,13 @@ Plans:
   2. `package.json` has `files` allowlist, LICENSE, and `prepublishOnly` typecheck
   3. `npm publish --dry-run` produces a clean, minimal tarball
 
-**Plans**: 2 plans
+**Plans**: 1/2 plans executed
 
 Plans:
 
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — npm publish readiness: MIT LICENSE, package.json files allowlist + license/author/prepublishOnly + tsx devDep→dep, delete tsconfig.json.bak; gate `npm publish --dry-run` (PKG-02)
+- [x] 03-01-PLAN.md — npm publish readiness: MIT LICENSE, package.json files allowlist + license/author/prepublishOnly + tsx devDep→dep, delete tsconfig.json.bak; gate `npm publish --dry-run` (PKG-02)
 
 **Wave 2** *(blocked on Wave 1 — README's published config references the bin 03-01 makes resolvable)*
 
@@ -89,4 +89,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Test Foundation & CI | 3/3 | Complete    | 2026-06-25 |
 | 2. Expand API Coverage | 3/3 | Complete    | 2026-06-26 |
-| 3. Publish & Docs | 0/2 | Not started | - |
+| 3. Publish & Docs | 1/2 | In Progress|  |

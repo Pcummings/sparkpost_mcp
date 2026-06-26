@@ -6,14 +6,14 @@ current_phase: 03
 current_phase_name: Publish & Docs
 status: executing
 stopped_at: Phase 3 context gathered
-last_updated: "2026-06-26T11:38:23.314Z"
+last_updated: "2026-06-26T11:41:52.946Z"
 last_activity: 2026-06-26
 last_activity_desc: Phase 03 execution started
 progress:
   total_phases: 3
   completed_phases: 2
   total_plans: 8
-  completed_plans: 6
+  completed_plans: 7
   percent: 67
 ---
 
@@ -29,8 +29,8 @@ See: .planning/PROJECT.md (updated 2026-06-25)
 ## Current Position
 
 Phase: 03 (Publish & Docs) — EXECUTING
-Plan: 1 of 2
-Status: Executing Phase 03
+Plan: 2 of 2
+Status: Ready to execute
 Last activity: 2026-06-26 — Phase 03 execution started
 
 Progress: [░░░░░░░░░░] 0%
@@ -50,6 +50,7 @@ Progress: [░░░░░░░░░░] 0%
 | 01 | 3 | - | - |
 | Phase 02 P01 | 8 | 3 tasks | 3 files |
 | 02 | 3 | - | - |
+| Phase 03 P01 | 5min | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,9 @@ Decisions are logged in PROJECT.md Key Decisions table. Recent:
 - [Phase ?]: Schema rejection tests call z.object(SchemaConst).parse() directly (D-02: handler calls bypass SDK validation)
 - [Phase ?]: encodeURIComponent on deleteWebhook id prevents path traversal (T-02-01)
 - [Phase ?]: KEY_GRANTS enum array restricts subaccount key grants to valid SparkPost set (T-02-02)
+- [Phase ?]: MIT LICENSE added
+- [Phase ?]: bin needs tsx at install time
+- [Phase ?]: no test/.planning/.env leaked
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-26T09:25:22.687Z
+Last session: 2026-06-26T11:41:48.609Z
 Stopped at: Phase 3 context gathered
 Resume file: .planning/phases/03-publish-docs/03-CONTEXT.md
