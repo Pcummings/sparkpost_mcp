@@ -38,7 +38,7 @@ Milestone v1.1 active scope. Each maps to a roadmap phase.
 ### API Coverage
 
 - [x] **COV-01**: Webhook tools — list, create, delete
-- [ ] **COV-02**: Message-events / analytics tools — event search + deliverability metrics
+- [x] **COV-02**: Message-events / analytics tools — event search + deliverability metrics
 - [ ] **COV-03**: Recipient-list tools — list, get, create
 - [ ] **COV-04**: Suppression management — add and remove entries (not just check)
 - [x] **COV-05**: Subaccount tools — list, create
@@ -75,7 +75,7 @@ Deferred, tracked, not in current roadmap.
 | TEST-02 | Phase 1 | Complete |
 | TEST-03 | Phase 1 | Complete |
 | COV-01 | Phase 2 | Complete |
-| COV-02 | Phase 2 | Pending |
+| COV-02 | Phase 2 | Complete |
 | COV-03 | Phase 2 | Pending |
 | COV-04 | Phase 2 | Pending |
 | COV-05 | Phase 2 | Complete |
