@@ -27,6 +27,15 @@ import {
   SearchMessageEventsSchema,
   getDeliverabilityMetrics,
   GetDeliverabilityMetricsSchema,
+  listRecipientLists,
+  getRecipientList,
+  GetRecipientListSchema,
+  createRecipientList,
+  CreateRecipientListSchema,
+  addSuppression,
+  AddSuppressionSchema,
+  removeSuppression,
+  RemoveSuppressionSchema,
 } from "./src/sparkpost.js";
 
 const API_KEY = process.env.SPARKPOST_API_KEY;
@@ -52,6 +61,12 @@ server.tool("list_subaccounts", "List all subaccounts", {}, listSubaccounts);
 server.tool("create_subaccount", "Create a subaccount with an API key (name, key_label, key_grants)", CreateSubaccountSchema, createSubaccount);
 server.tool("search_message_events", "Search message events (one page; cursor + per_page for paging)", SearchMessageEventsSchema, searchMessageEvents);
 server.tool("get_deliverability_metrics", "Get deliverability metrics (from + metrics required; group_by selects a breakdown dimension)", GetDeliverabilityMetricsSchema, getDeliverabilityMetrics);
+
+server.tool("list_recipient_lists", "List all recipient lists", {}, listRecipientLists);
+server.tool("get_recipient_list", "Get a recipient list by id (optionally with recipients)", GetRecipientListSchema, getRecipientList);
+server.tool("create_recipient_list", "Create a recipient list (recipients required; id/name auto-generated if omitted)", CreateRecipientListSchema, createRecipientList);
+server.tool("add_suppression", "Add or update a suppression entry for one email", AddSuppressionSchema, addSuppression);
+server.tool("remove_suppression", "Remove the suppression entry for one email", RemoveSuppressionSchema, removeSuppression);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
