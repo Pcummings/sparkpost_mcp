@@ -43,14 +43,37 @@ npm start
 
 | Tool | Description |
 |------|-------------|
-| `get_account` | Account info + usage |
-| `list_templates` | List all templates |
-| `get_template` | Get one template (optional draft) |
-| `create_template` | Create a template |
-| `update_template` | Update a template |
-| `send_email` | Send transactional email (inline or by template) |
+| `get_account` | Get SparkPost EU account info and usage |
+| `list_templates` | List all email templates |
+| `get_template` | Get a specific template by ID |
+| `create_template` | Create a new email template |
+| `update_template` | Update an existing template |
+| `send_email` | Send a test/transactional email |
 | `check_suppression` | Check if an address is suppressed |
-| `list_sending_domains` | List verified sending domains |
+| `list_sending_domains` | List all verified sending domains |
+| `list_webhooks` | List all webhooks |
+| `create_webhook` | Create a webhook (name, target URL, events) |
+| `delete_webhook` | Delete a single webhook by id |
+| `list_subaccounts` | List all subaccounts |
+| `create_subaccount` | Create a subaccount with an API key (name, key_label, key_grants) |
+| `search_message_events` | Search message events (one page; cursor + per_page for paging) |
+| `get_deliverability_metrics` | Get deliverability metrics (from + metrics required; group_by selects a breakdown dimension) |
+| `list_recipient_lists` | List all recipient lists |
+| `get_recipient_list` | Get a recipient list by id (optionally with recipients) |
+| `create_recipient_list` | Create a recipient list (recipients required; id/name auto-generated if omitted) |
+| `add_suppression` | Add or update a suppression entry for one email |
+| `remove_suppression` | Remove the suppression entry for one email |
+
+## Usage examples
+
+**Send an email:**
+> Send a transactional email to alice@example.com from noreply@yourdomain.com with subject "Hello" and body "<p>Hi Alice</p>"
+
+**Create a template:**
+> Create an email template with id "welcome", name "Welcome Email", subject "Welcome to {{company}}!", html "<p>Hi {{name}}</p>", from noreply@yourdomain.com
+
+**Search recent bounces:**
+> Search message events for bounce events in the last 24 hours for recipient domain example.com
 
 ## Dev
 
