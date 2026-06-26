@@ -23,6 +23,10 @@ import {
   listSubaccounts,
   createSubaccount,
   CreateSubaccountSchema,
+  searchMessageEvents,
+  SearchMessageEventsSchema,
+  getDeliverabilityMetrics,
+  GetDeliverabilityMetricsSchema,
 } from "./src/sparkpost.js";
 
 const API_KEY = process.env.SPARKPOST_API_KEY;
@@ -46,6 +50,8 @@ server.tool("create_webhook", "Create a webhook (name, target URL, events)", Cre
 server.tool("delete_webhook", "Delete a single webhook by id", DeleteWebhookSchema, deleteWebhook);
 server.tool("list_subaccounts", "List all subaccounts", {}, listSubaccounts);
 server.tool("create_subaccount", "Create a subaccount with an API key (name, key_label, key_grants)", CreateSubaccountSchema, createSubaccount);
+server.tool("search_message_events", "Search message events (one page; cursor + per_page for paging)", SearchMessageEventsSchema, searchMessageEvents);
+server.tool("get_deliverability_metrics", "Get deliverability metrics (from + metrics required; group_by selects a breakdown dimension)", GetDeliverabilityMetricsSchema, getDeliverabilityMetrics);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
