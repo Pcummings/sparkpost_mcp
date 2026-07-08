@@ -1,0 +1,54 @@
+name: Publish
+
+# Publishes to npm when main is updated (e.g. a PR merge) AND the version in
+# package.json differs from what's on npm. Bump the version in your PR
+# (e.g. `npm version patch`) — the merge then publishes it automatically.
+#
+# Auth is npm Trusted Publishing (OIDC) — no NPM_TOKEN secret. One-time setup:
+# on npmjs.com, open the @pcummings/sparkpost-mcp package → Settings →
+# Trusted Publisher → GitHub Actions, and set:
+#   Organization/user: Pcummings
+#   Repository:        sparkpost_mcp
+#   Workflow filename: publish.yml
+#   (Environment: leave blank)   Allowed: npm publish
+# https://docs.npmjs.com/trusted-publishers
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write # OIDC token for npm trusted publishing (required)
+  contents: write # push the release tag
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24" # trusted publishing needs Node >= 22.14 / npm >= 11.5.1
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm@latest # ensure npm >= 11.5.1 for OIDC publishing
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - id: v
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          LOCAL=$(node -p "require('./package.json').version")
+          REMOTE=$(npm view "$PKG" version 2>/dev/null || echo "none")
+          echo "version=$LOCAL" >> "$GITHUB_OUTPUT"
+          if [ "$LOCAL" = "$REMOTE" ]; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::$PKG@$LOCAL already on npm — skipping publish."
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.v.outputs.publish == 'true'
+        run: npm publish # OIDC auth + automatic provenance; no token needed
+      - if: steps.v.outputs.publish == 'true'
+        run: |
+          git tag "v${{ steps.v.outputs.version }}"
+          git push origin "v${{ steps.v.outputs.version }}"
