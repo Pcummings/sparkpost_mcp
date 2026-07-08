@@ -1,6 +1,6 @@
 # sparkpost-mcp
 
-MCP server exposing the [SparkPost](https://www.sparkpost.com/) (EU) email API as tools — account, templates, sending, suppression, and sending domains.
+MCP server exposing the [SparkPost](https://www.sparkpost.com/) (EU) email API as 20 tools — account, templates, transactional sends, suppression, sending domains, webhooks, subaccounts, message events, deliverability metrics, and recipient lists.
 
 ## Setup
 
