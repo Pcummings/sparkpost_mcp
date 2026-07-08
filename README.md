@@ -2,16 +2,18 @@
 
 MCP server exposing the [SparkPost](https://www.sparkpost.com/) (EU) email API as 20 tools — account, templates, transactional sends, suppression, sending domains, webhooks, subaccounts, message events, deliverability metrics, and recipient lists.
 
+Published on npm as [`@pcummings/sparkpost-mcp`](https://www.npmjs.com/package/@pcummings/sparkpost-mcp).
+
 ## Install into an AI agent
 
 You need a `SPARKPOST_API_KEY` (SparkPost EU dashboard → API Keys). For the US region, also set `SPARKPOST_API_BASE=https://api.sparkpost.com/api/v1`.
 
-> The commands below fetch the server from npm via `npx -y sparkpost-mcp`. Until the package is published to npm, replace `npx -y sparkpost-mcp` with `npx tsx /absolute/path/to/index.ts` to run from a local clone.
+> The commands below fetch the server from npm via `npx -y @pcummings/sparkpost-mcp`. To run from a local clone instead, replace `npx -y @pcummings/sparkpost-mcp` with `npx tsx /absolute/path/to/index.ts`.
 
 **Claude Code**
 
 ```bash
-claude mcp add sparkpost -e SPARKPOST_API_KEY=your-key -- npx -y sparkpost-mcp
+claude mcp add sparkpost -e SPARKPOST_API_KEY=your-key -- npx -y @pcummings/sparkpost-mcp
 ```
 
 Add `--scope user` to make it available in every project.
@@ -19,13 +21,13 @@ Add `--scope user` to make it available in every project.
 **OpenAI Codex**
 
 ```bash
-codex mcp add sparkpost --env SPARKPOST_API_KEY=your-key -- npx -y sparkpost-mcp
+codex mcp add sparkpost --env SPARKPOST_API_KEY=your-key -- npx -y @pcummings/sparkpost-mcp
 ```
 
 **Gemini CLI**
 
 ```bash
-gemini mcp add -e SPARKPOST_API_KEY=your-key sparkpost npx -y sparkpost-mcp
+gemini mcp add -e SPARKPOST_API_KEY=your-key sparkpost npx -y @pcummings/sparkpost-mcp
 ```
 
 **US region** — append the base-URL env to any command above (`-e` for Claude/Gemini, `--env` for Codex):
@@ -41,14 +43,14 @@ SPARKPOST_API_BASE=https://api.sparkpost.com/api/v1
   "mcpServers": {
     "sparkpost": {
       "command": "npx",
-      "args": ["-y", "sparkpost-mcp"],
+      "args": ["-y", "@pcummings/sparkpost-mcp"],
       "env": { "SPARKPOST_API_KEY": "your-key" }
     }
   }
 }
 ```
 
-For a local clone (before publishing), use `"args": ["tsx", "/absolute/path/to/index.ts"]`.
+For a local clone, use `"args": ["tsx", "/absolute/path/to/index.ts"]`.
 
 ## Run from source
 
