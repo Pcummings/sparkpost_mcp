@@ -2,18 +2,40 @@
 
 MCP server exposing the [SparkPost](https://www.sparkpost.com/) (EU) email API as 20 tools — account, templates, transactional sends, suppression, sending domains, webhooks, subaccounts, message events, deliverability metrics, and recipient lists.
 
-## Setup
+## Install into an AI agent
+
+You need a `SPARKPOST_API_KEY` (SparkPost EU dashboard → API Keys). For the US region, also set `SPARKPOST_API_BASE=https://api.sparkpost.com/api/v1`.
+
+> The commands below fetch the server from npm via `npx -y sparkpost-mcp`. Until the package is published to npm, replace `npx -y sparkpost-mcp` with `npx tsx /absolute/path/to/index.ts` to run from a local clone.
+
+**Claude Code**
 
 ```bash
-npm install
-export SPARKPOST_API_KEY=your-key   # required; server exits if missing
-export SPARKPOST_API_BASE=...        # optional; defaults to EU. US: https://api.sparkpost.com/api/v1
-npm start
+claude mcp add sparkpost -e SPARKPOST_API_KEY=your-key -- npx -y sparkpost-mcp
 ```
 
-## MCP client config
+Add `--scope user` to make it available in every project.
 
-**Published package (recommended):**
+**OpenAI Codex**
+
+```bash
+codex mcp add sparkpost --env SPARKPOST_API_KEY=your-key -- npx -y sparkpost-mcp
+```
+
+**Gemini CLI**
+
+```bash
+gemini mcp add -e SPARKPOST_API_KEY=your-key sparkpost npx -y sparkpost-mcp
+```
+
+**US region** — append the base-URL env to any command above (`-e` for Claude/Gemini, `--env` for Codex):
+
+```
+SPARKPOST_API_BASE=https://api.sparkpost.com/api/v1
+```
+
+**Any other MCP client** (Claude Desktop, Cursor, Windsurf, VS Code, Cline, Zed …) — add this to the client's MCP config:
+
 ```json
 {
   "mcpServers": {
@@ -26,17 +48,15 @@ npm start
 }
 ```
 
-**Local dev:**
-```json
-{
-  "mcpServers": {
-    "sparkpost": {
-      "command": "npx",
-      "args": ["tsx", "/absolute/path/to/index.ts"],
-      "env": { "SPARKPOST_API_KEY": "your-key" }
-    }
-  }
-}
+For a local clone (before publishing), use `"args": ["tsx", "/absolute/path/to/index.ts"]`.
+
+## Run from source
+
+```bash
+npm install
+export SPARKPOST_API_KEY=your-key   # required; server exits if missing
+export SPARKPOST_API_BASE=...        # optional; defaults to EU. US: https://api.sparkpost.com/api/v1
+npm start
 ```
 
 ## Tools
@@ -79,4 +99,5 @@ npm start
 
 ```bash
 npm run typecheck   # tsc --noEmit
+npm test            # node:test suite (44 tests)
 ```
